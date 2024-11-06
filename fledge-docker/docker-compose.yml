@@ -1,0 +1,41 @@
+# from https://github.com/fledge-power/fledgepower-deployment/blob/main/s61850-n104-ubuntu2004/docker-compose.yml
+# changes:
+#   modified container names and images to prevent collision with earlier version
+
+
+version: "3.1"
+
+services:
+
+  fledge-power:
+    container_name: fledge_24
+    image: fledgepower/fledge_24
+    build:
+      context: fledge/
+      dockerfile: fledge.dockerfile
+    ports:
+      - "8081:8081"
+      - "1995:1995"
+      - "6683:6683"
+      - "2404:2404"
+      # - "443:443"
+
+    networks:
+      - fledge-power
+
+  fledge-gui:
+    container_name: fledge-gui_24
+    image: fledgepower/fledge-gui_24
+    build:
+      context: fledge-gui/
+      dockerfile: fledge-gui.dockerfile
+    ports:
+      - "8080:80"
+      # - "443:443"
+
+    networks:
+      - fledge-power
+
+networks:
+  fledge-power:
+    driver: bridge
