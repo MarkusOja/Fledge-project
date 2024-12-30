@@ -24,7 +24,7 @@ became the bottleneck, but searching for a definitive limit was not one of the g
 testing.
 
 ## Link to Thesis:
-to be added.
+https://urn.fi/URN:NBN:fi:oulu-202412177354
 
 ## Installation using Docker:
 
